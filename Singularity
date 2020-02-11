@@ -57,5 +57,7 @@ From: nickjer/singularity-r
   rm -f get-pip.py
   pip3 install ldap3
 
+  apt-get install -y libxml2-dev
+
   # Clean up
   rm -rf /var/lib/apt/lists/*
