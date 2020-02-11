@@ -22,8 +22,14 @@ From: nickjer/singularity-r
     rstudio_auth.sh \
     ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio_auth
   install -Dv \
+    rstudio_auth_file.py \
+    ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio_auth_file
+  install -Dv \
     ldap_auth.py \
     ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/ldap_auth
+  install -Dv \
+    rstudio-passwd.py \
+    ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio-passwd
 
 %post
   # Software versions
