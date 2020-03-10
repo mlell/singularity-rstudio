@@ -1,8 +1,8 @@
 BootStrap: shub
-From: nickjer/singularity-r
+From: mlell/singularity-r
 
 %labels
-  Maintainer Jeremy Nicklas
+  Maintainer Moritz Lell
   RStudio_Version 1.2.5033
 
 %help
