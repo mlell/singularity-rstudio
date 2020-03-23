@@ -1,8 +1,8 @@
 BootStrap: shub
-From: nickjer/singularity-r:3.6.2
+From: mlell/singularity-r
 
 %labels
-  Maintainer Jeremy Nicklas
+  Maintainer Moritz Lell
   RStudio_Version 1.2.5033
 
 %help
@@ -22,8 +22,14 @@ From: nickjer/singularity-r:3.6.2
     rstudio_auth.sh \
     ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio_auth
   install -Dv \
+    rstudio_auth_file.py \
+    ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio_auth_file
+  install -Dv \
     ldap_auth.py \
     ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/ldap_auth
+  install -Dv \
+    rstudio-passwd.py \
+    ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio-passwd
 
 %post
   # Software versions
@@ -38,7 +44,7 @@ From: nickjer/singularity-r:3.6.2
   wget \
     --no-verbose \
     -O rstudio-server.deb \
-    "https://download2.rstudio.org/server/trusty/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb"
+    "https://download2.rstudio.org/server/bionic/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb"
   gdebi -n rstudio-server.deb
   rm -f rstudio-server.deb
 
@@ -50,6 +56,8 @@ From: nickjer/singularity-r:3.6.2
   python3 get-pip.py
   rm -f get-pip.py
   pip3 install ldap3
+
+  apt-get install -y libxml2-dev
 
   # Clean up
   rm -rf /var/lib/apt/lists/*
