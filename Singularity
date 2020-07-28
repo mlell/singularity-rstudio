@@ -33,7 +33,7 @@ From: mlell/singularity-r
 
 %post
   # Software versions
-  export RSTUDIO_VERSION=1.2.5033
+  export RSTUDIO_VERSION=1.3.1056
 
   # Install RStudio Server
   apt-get update
