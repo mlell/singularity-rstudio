@@ -59,5 +59,11 @@ From: mlell/singularity-r
 
   apt-get install -y libxml2-dev git
 
+  # Do not let OpenBLAS launch a thread per core, that exhausts resource
+  # limits when running many workers on machines with many cores
+  # RStudio server does not honor environment variables, so I need to
+  # set it here as well
+  echo "OMP_NUM_THREADS=1" >> /etc/R/Renviron.site
+
   # Clean up
   rm -rf /var/lib/apt/lists/*
