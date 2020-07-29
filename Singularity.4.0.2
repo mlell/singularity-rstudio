@@ -82,6 +82,9 @@ From: mlell/singularity-r
   install -Dv \
     rstudio-passwd.py \
     ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio-passwd
+  install -Dv \
+    find_port \
+    ${SINGULARITY_ROOTFS}/usr/bin
 
 %post
   # Software versions
