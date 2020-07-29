@@ -29,7 +29,7 @@ From: mlell/singularity-r
 
   * rstudio_auth_file: The password is read from a file whose path is defined
     by the environment variable `RSTUDIO_PASSWORD_FILE`, which can be set by
-    the user. The password file can be created using the tool `rstudio-passwd`
+    the user. The password file can be created using the tool `rstudio_passwd`
     that is included in this container.
 
   * auth_ldap: User authentication is delegated to an LDAP server.
@@ -50,12 +50,12 @@ From: mlell/singularity-r
   RStudio Server. See run-help of this container for general usage information
   and rserver --help for a reference of all command line arguments
 
-%apprun rstudio-passwd
-  exec rstudio-passwd "${@}"
+%apprun rstudio_passwd
+  exec /usr/lib/rstudio-server/bin/rstudio_passwd "${@}"
 
-%apphelp rstudio-passwd
+%apphelp rstudio_passwd
   Save a password to access RStudio Server via the browser. Execute
-  `rstudio-passwd --help` for more information.
+  `rstudio_passwd --help` for more information.
 
 %apprun help_ldap_auth
   exec /usr/lib/rstudio-server-bin/ldap_auth --help
@@ -80,8 +80,8 @@ From: mlell/singularity-r
     ldap_auth.py \
     ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/ldap_auth
   install -Dv \
-    rstudio-passwd.py \
-    ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio-passwd
+    rstudio_passwd.py \
+    ${SINGULARITY_ROOTFS}/usr/lib/rstudio-server/bin/rstudio_passwd
   install -Dv \
     find_port \
     ${SINGULARITY_ROOTFS}/usr/bin
